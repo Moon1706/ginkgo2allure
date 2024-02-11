@@ -1,0 +1,30 @@
+---
+project_name: ginkgo2allure
+release:
+  github:
+    owner: Moon1706
+    name: ginkgo2allure
+builds:
+  - id: ginkgo2allure
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - "386"
+      - arm64
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    main: main.go
+    ldflags: -s -w
+      -X github.com/Moon1706/ginkgo2allure/pkg/version.version=
+archives:
+  - id: ginkgo2allure
+    builds:
+      - ginkgo2allure
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
