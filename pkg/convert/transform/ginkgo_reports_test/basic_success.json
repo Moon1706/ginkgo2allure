@@ -1,0 +1,178 @@
+[
+  {
+    "SuitePath": "/Users/moon1706/test/tests/e2e",
+    "SuiteDescription": "BasicSuite",
+    "SuiteLabels": [],
+    "SuiteSucceeded": true,
+    "SuiteHasProgrammaticFocus": false,
+    "SpecialSuiteFailureReasons": [],
+    "PreRunStats": {
+      "TotalSpecs": 1,
+      "SpecsThatWillRun": 1
+    },
+    "StartTime": "2024-02-08T12:27:30.496856+03:00",
+    "EndTime": "2024-02-08T12:27:30.5026+03:00",
+    "RunTime": 5744000,
+    "SuiteConfig": {
+      "RandomSeed": 1707384446,
+      "RandomizeAllSpecs": false,
+      "FocusStrings": null,
+      "SkipStrings": null,
+      "FocusFiles": null,
+      "SkipFiles": null,
+      "LabelFilter": "",
+      "FailOnPending": false,
+      "FailFast": false,
+      "FlakeAttempts": 0,
+      "MustPassRepeatedly": 0,
+      "DryRun": false,
+      "PollProgressAfter": 0,
+      "PollProgressInterval": 0,
+      "Timeout": 3596978396709,
+      "EmitSpecProgress": false,
+      "OutputInterceptorMode": "",
+      "SourceRoots": null,
+      "GracePeriod": 30000000000,
+      "ParallelProcess": 1,
+      "ParallelTotal": 9,
+      "ParallelHost": "127.0.0.1:51231"
+    },
+    "SpecReports": [
+      {
+        "ContainerHierarchyTexts": [
+          "Check basic-test"
+        ],
+        "ContainerHierarchyLocations": [
+          {
+            "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+            "LineNumber": 17
+          }
+        ],
+        "ContainerHierarchyLabels": [
+          null
+        ],
+        "LeafNodeType": "It",
+        "LeafNodeLocation": {
+          "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+          "LineNumber": 62
+        },
+        "LeafNodeLabels": [
+          "id=c57e2b09-901f-4991-a516-a22c8bb625d4",
+          "story=story1"
+        ],
+        "LeafNodeText": "test 1",
+        "State": "passed",
+        "StartTime": "2024-02-08T12:27:30.501288+03:00",
+        "EndTime": "2024-02-08T12:27:30.501918+03:00",
+        "RunTime": 630750,
+        "ParallelProcess": 5,
+        "NumAttempts": 1,
+        "MaxFlakeAttempts": 0,
+        "MaxMustPassRepeatedly": 0,
+        "SpecEvents": [
+          {
+            "SpecEventType": "Node",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 62
+            },
+            "TimelineLocation": {
+              "Order": 1,
+              "Time": "2024-02-08T12:27:30.501564+03:00"
+            },
+            "Message": "test 1",
+            "NodeType": "It"
+          },
+          {
+            "SpecEventType": "By",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 63
+            },
+            "TimelineLocation": {
+              "Order": 2,
+              "Time": "2024-02-08T12:27:30.501853+03:00"
+            },
+            "Message": "plain 1"
+          },
+          {
+            "SpecEventType": "By",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 64
+            },
+            "TimelineLocation": {
+              "Order": 3,
+              "Time": "2024-02-08T12:27:30.501856+03:00"
+            },
+            "Message": "nested 1"
+          },
+          {
+            "SpecEventType": "By",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 65
+            },
+            "TimelineLocation": {
+              "Order": 4,
+              "Time": "2024-02-08T12:27:30.501858+03:00"
+            },
+            "Message": "nested 2"
+          },
+          {
+            "SpecEventType": "By (End)",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 65
+            },
+            "TimelineLocation": {
+              "Order": 5,
+              "Time": "2024-02-08T12:27:30.501907+03:00"
+            },
+            "Message": "nested 2",
+            "Duration": 49625
+          },
+          {
+            "SpecEventType": "By",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 68
+            },
+            "TimelineLocation": {
+              "Order": 6,
+              "Time": "2024-02-08T12:27:30.501909+03:00"
+            },
+            "Message": "plain 2"
+          },
+          {
+            "SpecEventType": "By (End)",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 64
+            },
+            "TimelineLocation": {
+              "Order": 7,
+              "Time": "2024-02-08T12:27:30.501909+03:00"
+            },
+            "Message": "nested 1",
+            "Duration": 53625
+          },
+          {
+            "SpecEventType": "Node (End)",
+            "CodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 62
+            },
+            "TimelineLocation": {
+              "Order": 9,
+              "Time": "2024-02-08T12:27:30.501916+03:00"
+            },
+            "Message": "test 1",
+            "Duration": 351709,
+            "NodeType": "It"
+          }
+        ]
+      }
+    ]
+  }
+]

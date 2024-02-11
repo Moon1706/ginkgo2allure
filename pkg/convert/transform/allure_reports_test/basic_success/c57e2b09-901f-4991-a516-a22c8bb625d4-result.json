@@ -1,0 +1,69 @@
+{
+    "name": "test 1",
+    "fullName": "c57e2b09-901f-4991-a516-a22c8bb625d4",
+    "status": "passed",
+    "statusDetails": {
+        "message": "",
+        "trace": ""
+    },
+    "start": 1707384450501,
+    "stop": 1707384450501,
+    "uuid": "c57e2b09-901f-4991-a516-a22c8bb625d4",
+    "historyId": "34c08d52a2d4f237f57b5fcebef8193a",
+    "testCaseId": "b708eb300aa644ebd0a20302aa382b68",
+    "description": "Check basic-test test 1",
+    "labels": [
+        {
+            "name": "id",
+            "value": "c57e2b09-901f-4991-a516-a22c8bb625d4"
+        },
+        {
+            "name": "story",
+            "value": "story1"
+        },
+        {
+            "name": "epic",
+            "value": "base"
+        },
+        {
+            "name": "suite",
+            "value": "BasicSuite"
+        }
+    ],
+    "steps": [
+        {
+            "name": "[It] test 1",
+            "status": "passed",
+            "start": 1707384450501,
+            "stop": 1707384450501,
+            "steps": [
+                {
+                    "name": "plain 1",
+                    "status": "passed",
+                    "start": 1707384450501,
+                    "stop": 1707384450501
+                },
+                {
+                    "name": "nested 1",
+                    "status": "passed",
+                    "start": 1707384450501,
+                    "stop": 1707384450501,
+                    "steps": [
+                        {
+                            "name": "nested 2",
+                            "status": "passed",
+                            "start": 1707384450501,
+                            "stop": 1707384450501
+                        },
+                        {
+                            "name": "plain 2",
+                            "status": "passed",
+                            "start": 1707384450501,
+                            "stop": 1707384450501
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
