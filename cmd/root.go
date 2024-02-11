@@ -22,6 +22,7 @@ const (
 	FlagLabelSeparator  = "label_separator"
 	FlagMandatoryLabels = "mandatory_labels"
 	FlagAnalyzeErrors   = "analyze_errors"
+	FlagAutoGenID       = "auto_gen_id"
 	FlagLogLevel        = "log_level"
 )
 
@@ -58,6 +59,10 @@ in a separate folder allure-results.`,
 		if err == nil {
 			config.TransformOpts = append(config.TransformOpts, transform.WillAnalyzeErrors(analyzeErrors, analyzeErrors))
 		}
+		autoGenID, err := cmd.Flags().GetBool(FlagAutoGenID)
+		if err == nil {
+			config.LabelsScraperOpts = append(config.LabelsScraperOpts, report.WillAutoGenerateID(autoGenID))
+		}
 		app.StartConvertion(args[0], args[1], config, logger)
 	},
 }
@@ -74,6 +79,7 @@ func init() {
 	rootCmd.Flags().String(FlagLabelSeparator, report.DefaultLabelSpliter, "labels separator")
 	rootCmd.Flags().StringSlice(FlagMandatoryLabels, []string{report.IDLabelName}, "allure mandatory labels")
 	rootCmd.Flags().Bool(FlagAnalyzeErrors, true, "will analyze test fails in Ginkgo report or not")
+	rootCmd.Flags().Bool(FlagAutoGenID, report.DefaultAutoGenerateID, "will auto generate UUID for Ginkgo test or not")
 	rootCmd.PersistentFlags().StringVarP(&logLevel, FlagLogLevel, "l", "info", "log level")
 }
 

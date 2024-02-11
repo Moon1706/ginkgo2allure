@@ -1,7 +1,6 @@
 package report
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 
@@ -16,23 +15,22 @@ const (
 	IDLabelName          = "id"
 	DescriptionLabelName = "description"
 
-	DefaultLabelSpliter = "="
-	DefaultEpic         = "base"
-	DefaultSuiteName    = ""
+	DefaultLabelSpliter   = "="
+	DefaultEpic           = "base"
+	DefaultSuiteName      = ""
+	DefaultAutoGenerateID = false
 
 	CorrectCountLabelsParts = 2
 )
 
-var (
-	ErrNoID = errors.New("test doesn't contain allure id in labels")
-)
-
 type (
 	DefaultLabelsScraper struct {
+		testName       string
 		epic           string
 		suiteName      string
 		testCaseLabels map[string]string
 		labelSpliter   string
+		autogenID      bool
 	}
 	LabelsScraperOpt func(o *DefaultLabelsScraper)
 )
@@ -55,11 +53,20 @@ func WithSuiteName(suiteName string) LabelsScraperOpt {
 	}
 }
 
-func NewLabelScraper(leafNodeLabels []string, scraperOptions ...LabelsScraperOpt) *DefaultLabelsScraper {
+func WillAutoGenerateID(autogen bool) LabelsScraperOpt {
+	return func(o *DefaultLabelsScraper) {
+		o.autogenID = autogen
+	}
+}
+
+func NewLabelScraper(leafNodeText string, leafNodeLabels []string,
+	scraperOptions ...LabelsScraperOpt) *DefaultLabelsScraper {
 	scraper := &DefaultLabelsScraper{
+		testName:     leafNodeText,
 		epic:         DefaultEpic,
 		suiteName:    DefaultSuiteName,
 		labelSpliter: DefaultLabelSpliter,
+		autogenID:    DefaultAutoGenerateID,
 	}
 	for _, o := range scraperOptions {
 		o(scraper)
@@ -110,10 +117,13 @@ func (ls *DefaultLabelsScraper) CreateAllureLabels() (labels []*allure.Label) {
 	return labels
 }
 
-func (ls *DefaultLabelsScraper) GetID() (uuid.UUID, error) {
+func (ls *DefaultLabelsScraper) GetID(defaultID uuid.UUID) (uuid.UUID, error) {
 	id, ok := ls.testCaseLabels[IDLabelName]
 	if !ok {
-		return uuid.UUID{}, ErrNoID
+		if ls.autogenID {
+			return defaultID, nil
+		}
+		return uuid.UUID{}, fmt.Errorf("test with name `%s` doesn't contain UUID", ls.testName)
 	}
 	allureUUID, err := uuid.Parse(id)
 	if err != nil {

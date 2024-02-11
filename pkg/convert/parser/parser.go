@@ -43,7 +43,7 @@ func NewParser(specReport types.SpecReport, transformer Transformer,
 
 func NewDefaultParser(specReport types.SpecReport, config Config) (*Parser, error) {
 	t := transform.NewTransform(config.TransformOpts...)
-	ls := report.NewLabelScraper(specReport.LeafNodeLabels, config.LabelsScraperOpts...)
+	ls := report.NewLabelScraper(specReport.LeafNodeText, specReport.LeafNodeLabels, config.LabelsScraperOpts...)
 	r := report.NewReport(specReport, config.ReportOpts...)
 	return NewParser(specReport, t, ls, r), nil
 }

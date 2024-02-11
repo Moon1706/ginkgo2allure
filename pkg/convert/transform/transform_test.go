@@ -9,6 +9,7 @@ import (
 
 	"github.com/Moon1706/ginkgo2allure/pkg/convert/report"
 	"github.com/Moon1706/ginkgo2allure/pkg/convert/transform"
+	"github.com/google/uuid"
 	"github.com/onsi/ginkgo/v2/types"
 	"github.com/ozontech/allure-go/pkg/allure"
 	"github.com/stretchr/testify/assert"
@@ -118,8 +119,8 @@ func TestTransformAnalyzeEvents(t *testing.T) {
 				}
 				steps := tr.GetAllureSteps()
 
-				ls := report.NewLabelScraper(ginkgoSpecReport.LeafNodeLabels)
-				id, err := ls.GetID()
+				ls := report.NewLabelScraper(ginkgoSpecReport.LeafNodeText, ginkgoSpecReport.LeafNodeLabels)
+				id, err := ls.GetID(uuid.New())
 				assert.Empty(t, err, "id got correctly")
 
 				allureReportPath := filepath.Join(allureReportFolderPath, tt.fileName, fmt.Sprintf("%s-result.json", id))
