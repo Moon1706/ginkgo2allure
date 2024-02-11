@@ -105,7 +105,7 @@ You can also use the converter exactly in your Ginkgo code.
 
 ```go
 import (
-    . "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/ginkgo/v2"
 	"github.com/onsi/ginkgo/v2/types"
 	"github.com/Moon1706/ginkgo2allure/pkg/convert"
 	fmngr "github.com/Moon1706/ginkgo2allure/pkg/convert/file_manager"
@@ -113,14 +113,14 @@ import (
 )
 
 var _ = ReportAfterSuite("allure report", func(report types.Report) {
-    allureReports, err := convert.GinkgoToAllureReport(report, parser.NewDefaultParser, parser.Config{})
-    if err != nil {
+	allureReports, err := convert.GinkgoToAllureReport(report, parser.NewDefaultParser, parser.Config{})
+	if err != nil {
 		panic(err)
 	}
 
 	fileManager := fmngr.NewFileManager("./allure-results")
 	errs = convert.PrintAllureReports(allureReports, fileManager)
-    if err != nil {
+	if err != nil {
 		panic(err)
 	}
 })
