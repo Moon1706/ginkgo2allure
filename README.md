@@ -2,14 +2,6 @@
 
 CLI and library that are used to convert Ginkgo JSON reports into Allure JSON reports. Globally used for E2E and integration testing.
 
-## Dependencies
-
-There is no need to install additional dependencies on the user's part. The project itself relies heavily on the [OzonTech library](github.com/ozontech/allure-go).
-
-## Installation
-
-Simply download the binary file and use it.
-
 ## Usage
 
 ### TestCaseID issue
