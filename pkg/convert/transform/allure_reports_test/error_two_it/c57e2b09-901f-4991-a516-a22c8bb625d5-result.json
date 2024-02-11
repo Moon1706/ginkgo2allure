@@ -1,0 +1,41 @@
+{
+    "name": "test 1",
+    "fullName": "c57e2b09-901f-4991-a516-a22c8bb625d5",
+    "status": "failed",
+    "statusDetails": {
+        "message": "Expected\n    \u003cstring\u003e: 1\nto equal\n    \u003cstring\u003e: 2",
+        "trace": "github.com/moon1706/test/tests/e2e_test.glob..func1.2()\n\t/Users/moon1706/test/tests/e2e/e2e_test.go:66 +0x90"
+    },
+    "start": 1707386321482,
+    "stop": 1707386321483,
+    "uuid": "c57e2b09-901f-4991-a516-a22c8bb625d5",
+    "historyId": "e50f2f6efb981ea84a1a52c07a34b6ad",
+    "testCaseId": "ed6a9e1a820569e029582e009018cb62",
+    "description": "Check basic-test test 1",
+    "labels": [
+        {
+            "name": "epic",
+            "value": "base"
+        },
+        {
+            "name": "suite",
+            "value": "BasicSuite"
+        },
+        {
+            "name": "id",
+            "value": "c57e2b09-901f-4991-a516-a22c8bb625d5"
+        },
+        {
+            "name": "story",
+            "value": "story1"
+        }
+    ],
+    "steps": [
+        {
+            "name": "[It] test 1",
+            "status": "failed",
+            "start": 1707386321483,
+            "stop": 1707386321483
+        }
+    ]
+}

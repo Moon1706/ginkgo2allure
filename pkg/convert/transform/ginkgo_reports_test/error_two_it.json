@@ -1,0 +1,195 @@
+[
+    {
+      "SuitePath": "/Users/moon1706/test/tests/e2e",
+      "SuiteDescription": "BasicSuite",
+      "SuiteLabels": [],
+      "SuiteSucceeded": false,
+      "SuiteHasProgrammaticFocus": false,
+      "SpecialSuiteFailureReasons": [],
+      "PreRunStats": {
+        "TotalSpecs": 2,
+        "SpecsThatWillRun": 2
+      },
+      "StartTime": "2024-02-08T12:58:41.477071+03:00",
+      "EndTime": "2024-02-08T12:58:41.484044+03:00",
+      "RunTime": 6973000,
+      "SuiteConfig": {
+        "RandomSeed": 1707386318,
+        "RandomizeAllSpecs": false,
+        "FocusStrings": null,
+        "SkipStrings": null,
+        "FocusFiles": null,
+        "SkipFiles": null,
+        "LabelFilter": "",
+        "FailOnPending": false,
+        "FailFast": false,
+        "FlakeAttempts": 0,
+        "MustPassRepeatedly": 0,
+        "DryRun": false,
+        "PollProgressAfter": 0,
+        "PollProgressInterval": 0,
+        "Timeout": 3597261554792,
+        "EmitSpecProgress": false,
+        "OutputInterceptorMode": "",
+        "SourceRoots": null,
+        "GracePeriod": 30000000000,
+        "ParallelProcess": 1,
+        "ParallelTotal": 9,
+        "ParallelHost": "127.0.0.1:51535"
+      },
+      "SpecReports": [
+        {
+          "ContainerHierarchyTexts": [
+            "Check basic-test"
+          ],
+          "ContainerHierarchyLocations": [
+            {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 17
+            }
+          ],
+          "ContainerHierarchyLabels": [
+            null
+          ],
+          "LeafNodeType": "It",
+          "LeafNodeLocation": {
+            "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+            "LineNumber": 62
+          },
+          "LeafNodeLabels": [
+            "id=c57e2b09-901f-4991-a516-a22c8bb625d4",
+            "story=story1"
+          ],
+          "LeafNodeText": "test 1",
+          "State": "passed",
+          "StartTime": "2024-02-08T12:58:41.48245+03:00",
+          "EndTime": "2024-02-08T12:58:41.483004+03:00",
+          "RunTime": 553834,
+          "ParallelProcess": 2,
+          "NumAttempts": 1,
+          "MaxFlakeAttempts": 0,
+          "MaxMustPassRepeatedly": 0,
+          "SpecEvents": [
+            {
+              "SpecEventType": "Node",
+              "CodeLocation": {
+                "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+                "LineNumber": 62
+              },
+              "TimelineLocation": {
+                "Order": 1,
+                "Time": "2024-02-08T12:58:41.482935+03:00"
+              },
+              "Message": "test 1",
+              "NodeType": "It"
+            },
+            {
+              "SpecEventType": "Node (End)",
+              "CodeLocation": {
+                "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+                "LineNumber": 62
+              },
+              "TimelineLocation": {
+                "Order": 3,
+                "Time": "2024-02-08T12:58:41.483001+03:00"
+              },
+              "Message": "test 1",
+              "Duration": 66583,
+              "NodeType": "It"
+            }
+          ]
+        },
+        {
+          "ContainerHierarchyTexts": [
+            "Check basic-test"
+          ],
+          "ContainerHierarchyLocations": [
+            {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 17
+            }
+          ],
+          "ContainerHierarchyLabels": [
+            null
+          ],
+          "LeafNodeType": "It",
+          "LeafNodeLocation": {
+            "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+            "LineNumber": 65
+          },
+          "LeafNodeLabels": [
+            "id=c57e2b09-901f-4991-a516-a22c8bb625d5",
+            "story=story1"
+          ],
+          "LeafNodeText": "test 1",
+          "State": "failed",
+          "StartTime": "2024-02-08T12:58:41.482517+03:00",
+          "EndTime": "2024-02-08T12:58:41.483192+03:00",
+          "RunTime": 675542,
+          "ParallelProcess": 6,
+          "Failure": {
+            "Message": "Expected\n    \u003cstring\u003e: 1\nto equal\n    \u003cstring\u003e: 2",
+            "Location": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 66,
+              "FullStackTrace": "github.com/moon1706/test/tests/e2e_test.glob..func1.2()\n\t/Users/moon1706/test/tests/e2e/e2e_test.go:66 +0x90"
+            },
+            "TimelineLocation": {
+              "Order": 2,
+              "Time": "2024-02-08T12:58:41.483185+03:00"
+            },
+            "FailureNodeContext": "leaf-node",
+            "FailureNodeType": "It",
+            "FailureNodeLocation": {
+              "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+              "LineNumber": 65
+            },
+            "ProgressReport": {
+              "LeafNodeLocation": {},
+              "SpecStartTime": "0001-01-01T00:00:00Z",
+              "CurrentNodeLocation": {},
+              "CurrentNodeStartTime": "0001-01-01T00:00:00Z",
+              "CurrentStepLocation": {},
+              "CurrentStepStartTime": "0001-01-01T00:00:00Z",
+              "TimelineLocation": {
+                "Time": "0001-01-01T00:00:00Z"
+              }
+            }
+          },
+          "NumAttempts": 1,
+          "MaxFlakeAttempts": 0,
+          "MaxMustPassRepeatedly": 0,
+          "SpecEvents": [
+            {
+              "SpecEventType": "Node",
+              "CodeLocation": {
+                "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+                "LineNumber": 65
+              },
+              "TimelineLocation": {
+                "Order": 1,
+                "Time": "2024-02-08T12:58:41.483028+03:00"
+              },
+              "Message": "test 1",
+              "NodeType": "It"
+            },
+            {
+              "SpecEventType": "Node (End)",
+              "CodeLocation": {
+                "FileName": "/Users/moon1706/test/tests/e2e/e2e_test.go",
+                "LineNumber": 65
+              },
+              "TimelineLocation": {
+                "Order": 3,
+                "Time": "2024-02-08T12:58:41.48319+03:00"
+              },
+              "Message": "test 1",
+              "Duration": 162625,
+              "NodeType": "It"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
