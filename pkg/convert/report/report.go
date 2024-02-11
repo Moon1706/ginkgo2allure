@@ -20,7 +20,7 @@ type (
 	LabelScraper interface {
 		CheckMandatoryLabels([]string) error
 		CreateAllureLabels() []*allure.Label
-		GetID() (uuid.UUID, error)
+		GetID(uuid.UUID) (uuid.UUID, error)
 		GetDescription(string) string
 	}
 	Opt func(o *DefaultReport)
@@ -37,7 +37,7 @@ func NewReport(specReport types.SpecReport, opts ...Opt) *DefaultReport {
 		mandatoryLabels: []string{},
 		specReport:      specReport,
 	}
-	ls := NewLabelScraper(specReport.LeafNodeLabels)
+	ls := NewLabelScraper(specReport.LeafNodeText, specReport.LeafNodeLabels)
 	r.SetLabelsScraper(ls)
 	for _, o := range opts {
 		o(r)
@@ -51,11 +51,11 @@ func (r *DefaultReport) SetLabelsScraper(ls LabelScraper) {
 
 func (r *DefaultReport) GenerateAllureReport(steps []*allure.Step) (allure.Result, error) {
 	emptyReport := allure.Result{}
-	err := r.labelScraper.CheckMandatoryLabels(r.mandatoryLabels)
+	id, err := r.labelScraper.GetID(uuid.New())
 	if err != nil {
 		return emptyReport, err
 	}
-	id, err := r.labelScraper.GetID()
+	err = r.labelScraper.CheckMandatoryLabels(r.mandatoryLabels)
 	if err != nil {
 		return emptyReport, err
 	}

@@ -10,6 +10,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	testName = "test"
+)
+
 func TestLabelScraperGetAllTestCaseLabels(t *testing.T) {
 	var tests = []struct {
 		name           string
@@ -60,7 +64,7 @@ func TestLabelScraperGetAllTestCaseLabels(t *testing.T) {
 	}}
 
 	for _, tt := range tests {
-		lb := report.NewLabelScraper(tt.leafNodeLabels, tt.scraperOpt...)
+		lb := report.NewLabelScraper(testName, tt.leafNodeLabels, tt.scraperOpt...)
 		tc := lb.GetTestCaseLabels()
 		assert.Equal(t, tc, tt.testCaseLabels, tt.name)
 	}
@@ -68,17 +72,17 @@ func TestLabelScraperGetAllTestCaseLabels(t *testing.T) {
 
 func TestLabelScraperCheckMandatoryLabels(t *testing.T) {
 	mandatoryLabelsLabels := []string{"correct"}
-	lb := report.NewLabelScraper([]string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)})
+	lb := report.NewLabelScraper(testName, []string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)})
 	err := lb.CheckMandatoryLabels(mandatoryLabelsLabels)
 	assert.Empty(t, err, "correct label was found in madatory labels")
 
-	lb = report.NewLabelScraper([]string{fmt.Sprintf("incorrect%slabel", report.DefaultLabelSpliter)})
+	lb = report.NewLabelScraper(testName, []string{fmt.Sprintf("incorrect%slabel", report.DefaultLabelSpliter)})
 	err = lb.CheckMandatoryLabels(mandatoryLabelsLabels)
 	assert.Error(t, err, "lables wasn't found in madatory labels")
 }
 
 func TestLabelScraperCreateAllureLabels(t *testing.T) {
-	lb := report.NewLabelScraper([]string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)},
+	lb := report.NewLabelScraper(testName, []string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)},
 		report.WithEpic(""))
 	allureLabels := lb.CreateAllureLabels()
 	assert.Equal(t, []*allure.Label{{
@@ -88,8 +92,10 @@ func TestLabelScraperCreateAllureLabels(t *testing.T) {
 }
 
 func TestLabelGetID(t *testing.T) {
+	defaultID := uuid.MustParse("f67b2057-fc82-4dd7-bbd5-9d178aab9901")
 	var tests = []struct {
 		name       string
+		autoGen    bool
 		labelName  string
 		labelValue string
 		id         uuid.UUID
@@ -108,12 +114,18 @@ func TestLabelGetID(t *testing.T) {
 		labelName:  report.IDLabelName,
 		labelValue: "ad7583dc-0e3d-4640-a020-567452d84886",
 		id:         uuid.MustParse("ad7583dc-0e3d-4640-a020-567452d84886"),
+	}, {
+		name:       "autogen label value",
+		labelName:  "",
+		labelValue: "",
+		autoGen:    true,
+		id:         defaultID,
 	}}
 
 	for _, tt := range tests {
-		lb := report.NewLabelScraper([]string{fmt.Sprintf("%s%s%s", tt.labelName,
-			report.DefaultLabelSpliter, tt.labelValue)})
-		id, _ := lb.GetID()
+		lb := report.NewLabelScraper(testName, []string{fmt.Sprintf("%s%s%s", tt.labelName,
+			report.DefaultLabelSpliter, tt.labelValue)}, report.WillAutoGenerateID(tt.autoGen))
+		id, _ := lb.GetID(defaultID)
 		assert.Equal(t, tt.id, id, tt.name)
 	}
 }
@@ -138,7 +150,7 @@ func TestLabelGetDescription(t *testing.T) {
 	}}
 
 	for _, tt := range tests {
-		lb := report.NewLabelScraper([]string{tt.descriptionLabel})
+		lb := report.NewLabelScraper(testName, []string{tt.descriptionLabel})
 		description := lb.GetDescription(tt.defaultDescription)
 		assert.Equal(t, tt.description, description, tt.name)
 	}
