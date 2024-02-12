@@ -2,7 +2,9 @@
 
 CLI and library that are used to convert Ginkgo JSON reports into Allure JSON reports. Globally used for E2E and integration testing.
 
-## Usage
+>NOTE: Was tested only for Ginkgo version `>=v2.3.0`.
+
+## Presettings
 
 ### TestCaseID issue
 
@@ -81,6 +83,12 @@ func TestRunner(t *testing.T) {
 
 As you can see, we use the basic Ginkgo `Fail` handler, which indeed doesn't have a lot of really important information for us (for instance, expect and actual values in a Gomega assert function). However, for compatibility, it was decided to stay with this handler and parse explicit trace output. It's a bad approach, but it will close most test cases. For you, it means that if you find any problems with this functionality, please inform me in Issue and disable it with the flag `--analyze_errors`.
 
+### Test description
+
+If you check [the official Ginko documentation](https://onsi.github.io/ginkgo/#adding-specs-to-a-suite), you will see that Ginkgo `Describe + Context (second Describe) + It` form simple English sentences. `Categorizing books with more than 300 pages should be a novel`. That's a basic naming rule in tests. Therefore, I decided to use this approach to write down the default description of the test case in Allure. However, I also offer the opportunity to create your own description; just append an additional label to `It`: `description=<your describe>`.
+
+## Usage
+
 ### CLI
 
 Now, after reading [TestCaseID issue](#TestCaseID_issue) you grasp how to prepare your code for conversion. Below is a basic CLI run.
@@ -128,8 +136,16 @@ var _ = ReportAfterSuite("allure report", func(report types.Report) {
 
 ## Build
 
+### Go code
+
 ```sh
 make bin
+```
+
+### Docker image
+
+```sh
+docker build -t ginkgo2allure:v0.0.1 .
 ```
 
 ## Test

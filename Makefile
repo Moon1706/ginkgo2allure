@@ -1,8 +1,8 @@
 export GO111MODULE=on
 
 .PHONY: bin
-bin: fmt vet
-	go build -o bin/ginkgo2allure github.com/Moon1706/ginkgo2allure
+bin:
+	go build -o bin/ginkgo2allure .
 
 .PHONY: fmt
 fmt:
