@@ -134,6 +134,17 @@ var _ = ReportAfterSuite("allure report", func(report types.Report) {
 })
 ```
 
+### Docker
+
+```sh
+# Get Ginkgo JSON report
+ginkgo -r --keep-going -p --json-report=report.json ./tests/e2e/
+# Create folder for Allure results
+mkdir -p ./allure-results/
+# Use CLI in docker
+docker run -it -v ./:/results moon1706/ginkgo2allure:0.2.0 /results/report.json /results/allure-results
+```
+
 ## Build
 
 ### Go code
