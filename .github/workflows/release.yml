@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: github.com/Moon1706/ginkgo2allure:${{ github.ref_name }}
+          tags: github.com/moon1706/ginkgo2allure:${{ github.ref_name }}
