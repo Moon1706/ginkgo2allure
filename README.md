@@ -24,7 +24,7 @@ For test aims, you can use the flag `--auto_gen_id`, which automatically generat
 
 #### General
 
-General label format is `<name><separator><value>`. If you want, you can change separator used flag `--label_separator`.
+General test case `It` label format is `<name><separator><value>`. If you want, you can change separator used flag `--label_separator`.
 
 You **HAVE TO** understand that all labels that were added in `It` labels will be checked in a loop, and if theirs can be split by a separator on **2** parts, they will be added to the final Allure labels. That feature allows you to add your own labels, like `owner`, `feature`, `story`, etc. Example `e2e_test.go`:
 
