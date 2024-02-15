@@ -16,19 +16,19 @@ func StartConvertion(ginkgoReportFile, allureReportsFolder string, config parser
 
 	file, err := os.ReadFile(ginkgoReportFile)
 	if err != nil {
-		sugar.Fatal("Error reading file `%s`", ginkgoReportFile)
+		sugar.Fatal("Error reading file ", ginkgoReportFile)
 	}
 
 	var ginkgoReport []types.Report
 	err = json.Unmarshal(file, &ginkgoReport)
 	if err != nil {
-		sugar.Fatal("Error unmarshaling file `%s`", ginkgoReportFile)
+		sugar.Fatal("Error unmarshaling file ", ginkgoReportFile)
 	}
 
 	allureReports, err := convert.GinkgoToAllureReport(ginkgoReport, parser.NewDefaultParser,
 		config)
 	if err != nil {
-		sugar.Fatal("Error converting report `%s`", ginkgoReportFile)
+		sugar.Fatal("Error converting report ", ginkgoReportFile, " ", err)
 	}
 
 	fileManager := fmngr.NewFileManager(allureReportsFolder)

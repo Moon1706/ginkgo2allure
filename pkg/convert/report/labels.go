@@ -16,7 +16,7 @@ const (
 	DescriptionLabelName = "description"
 
 	DefaultLabelSpliter   = "="
-	DefaultEpic           = "base"
+	DefaultEpic           = ""
 	DefaultSuiteName      = ""
 	DefaultAutoGenerateID = false
 
@@ -101,6 +101,9 @@ func (ls *DefaultLabelsScraper) getAllTestCaseLabels(labels []string) map[string
 func (ls *DefaultLabelsScraper) CheckMandatoryLabels(mandatoryLabels []string) error {
 	for _, mandatoryLabel := range mandatoryLabels {
 		if _, ok := ls.testCaseLabels[mandatoryLabel]; !ok {
+			if mandatoryLabel == IDLabelName && ls.autogenID {
+				continue
+			}
 			return fmt.Errorf("doesn't exist mandatory label: %s", mandatoryLabel)
 		}
 	}
