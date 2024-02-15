@@ -24,27 +24,18 @@ func TestLabelScraperGetAllTestCaseLabels(t *testing.T) {
 		name:           "empty",
 		leafNodeLabels: []string{},
 		testCaseLabels: map[string]string{},
-		scraperOpt:     []report.LabelsScraperOpt{report.WithEpic("")},
-	}, {
-		name:           "default values",
-		leafNodeLabels: []string{},
-		testCaseLabels: map[string]string{report.EpicLabelName: report.DefaultEpic},
-		scraperOpt:     []report.LabelsScraperOpt{},
 	}, {
 		name:           "incorrect label without spliter",
 		leafNodeLabels: []string{"incorrect-label"},
 		testCaseLabels: map[string]string{},
-		scraperOpt:     []report.LabelsScraperOpt{report.WithEpic("")},
 	}, {
 		name:           "incorrect label exist spliter, but many parts",
 		leafNodeLabels: []string{fmt.Sprintf("multi%[1]sincorrect%[1]slabel", report.DefaultLabelSpliter)},
 		testCaseLabels: map[string]string{},
-		scraperOpt:     []report.LabelsScraperOpt{report.WithEpic("")},
 	}, {
 		name:           "correct label",
 		leafNodeLabels: []string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)},
 		testCaseLabels: map[string]string{"correct": "label"},
-		scraperOpt:     []report.LabelsScraperOpt{report.WithEpic("")},
 	}, {
 		name:           "correct label with suite and epic labels",
 		leafNodeLabels: []string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)},
@@ -71,14 +62,19 @@ func TestLabelScraperGetAllTestCaseLabels(t *testing.T) {
 }
 
 func TestLabelScraperCheckMandatoryLabels(t *testing.T) {
-	mandatoryLabelsLabels := []string{"correct"}
-	lb := report.NewLabelScraper(testName, []string{fmt.Sprintf("correct%slabel", report.DefaultLabelSpliter)})
+	mandatoryLabelsLabels := []string{report.IDLabelName}
+	lb := report.NewLabelScraper(testName, []string{fmt.Sprintf("%s%slabel", report.IDLabelName,
+		report.DefaultLabelSpliter)})
 	err := lb.CheckMandatoryLabels(mandatoryLabelsLabels)
 	assert.Empty(t, err, "correct label was found in madatory labels")
 
 	lb = report.NewLabelScraper(testName, []string{fmt.Sprintf("incorrect%slabel", report.DefaultLabelSpliter)})
 	err = lb.CheckMandatoryLabels(mandatoryLabelsLabels)
 	assert.Error(t, err, "lables wasn't found in madatory labels")
+
+	lb = report.NewLabelScraper(testName, []string{}, report.WillAutoGenerateID(true))
+	err = lb.CheckMandatoryLabels(mandatoryLabelsLabels)
+	assert.Empty(t, err, fmt.Sprintf("autogen %s label", report.IDLabelName))
 }
 
 func TestLabelScraperCreateAllureLabels(t *testing.T) {

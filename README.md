@@ -2,7 +2,11 @@
 
 CLI and library that are used to convert Ginkgo JSON reports into Allure JSON reports. Globally used for E2E and integration testing.
 
->NOTE: Was tested only for Ginkgo version `>=v2.3.0`.
+For asserts can use:
+- [Gomega](https://github.com/onsi/gomega);
+- [Testify](https://github.com/stretchr/testify).
+
+> NOTE: Was tested only for Ginkgo version `>=v2.10.0`.
 
 ## Presettings
 
@@ -54,9 +58,10 @@ Result `b1f3572c-f1f0-4001-a4b6-97625206d9f9-result.json`
 
 #### Default labels
 
-By default, each Allure test adds the labels `id=<uuid>`,`suite=<suite-name>`, and `epic=base`. Label `epic` you can change with 2 options:
-1. Define the `It` test (high priority).
-2. Add the flag `--epic` in CLI (low priority).
+By default, each Allure test adds the labels `id=<uuid>`,`suite=<suite-name>`, and `epic=base`. Label `epic` you can change with the next options:
+1. Define directly in the `It` test.
+2. Add the flag `--epic` in CLI for global apply.
+3. Combine 1 and 2 options. Define the default epic with the flag `--epic` and rewrite it in the desired `It` test.
 
 #### Mandatory labels
 
@@ -91,7 +96,7 @@ If you check [the official Ginko documentation](https://onsi.github.io/ginkgo/#a
 
 ### CLI
 
-Now, after reading [TestCaseID issue](#TestCaseID_issue) you grasp how to prepare your code for conversion. Below is a basic CLI run.
+Now, after reading [TestCaseID issue](#testcaseid-issue) you grasp how to prepare your code for conversion. Below is a basic CLI run.
 
 ```sh
 # Get Ginkgo JSON report
